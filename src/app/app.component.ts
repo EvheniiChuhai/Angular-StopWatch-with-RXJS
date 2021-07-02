@@ -62,8 +62,9 @@ export class AppComponent implements OnInit {
             mapTo(1),
             scan((acc, curr) => control.value++, 0)
           )
+
         }
-          return of(control.value)
+          return of(control.value -1)
       }),
     ).subscribe((v) =>  {
       this.v = v;
