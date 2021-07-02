@@ -58,12 +58,15 @@ export class AppComponent implements OnInit {
       scan((control: Control, current): Control => ({...control, ...current}),{count: false, pause:false, value: 0}),
       switchMap((control: Control) => {
         if (control.count) {
+          console.log('im woked inside')
           return timer(0, 1000).pipe(
             mapTo(1),
             scan((acc, curr) => control.value++, 0)
           )
+
         }
-          return of(control.value)
+          console.log('im woked outside')
+          return of(control.value -1)
       }),
     ).subscribe((v) =>  {
       this.v = v;
